@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 /**
 * Made to resemble:
-* gcloud beta compute instance-groups managed create czr-rmig \
+* gcloud compute instance-groups managed create czr-rmig \
 * --region us-central1 \
 * --size 3 \
 * --template example-template \
@@ -30,8 +30,8 @@
 terraform {
   required_providers {
     google = {
-      source  = "hashicorp/google-beta"
-      version = ">= 7.8.0"
+      source  = "hashicorp/google"
+      version = ">= 7.40.0"
     }
   }
 }
@@ -49,7 +49,6 @@ resource "google_compute_instance_template" "default" {
 
 # [START compute_rmig_cross_zone_repair]
 resource "google_compute_region_instance_group_manager" "default" {
-  provider           = google-beta
   name               = "example-rmig"
   base_instance_name = "example-rmig-instance"
   region             = "us-central1"
